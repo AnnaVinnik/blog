@@ -1,5 +1,12 @@
-<h1>New Post</h1>
 
-<%= render 'form', post: @post %>
+<h4 class="my-4 font-weight-normal">New post</h4>
 
-<%= link_to 'Back', posts_path %>
+<div class="card mb-4 shadow-sm">
+      <div class="card-header">
+        <h4 class="my-0 font-weight-normal"><%= render 'form', post: @post %></h4>
+      </div>
+     
+</div>
+ <div class="card-body">
+        <h5 class="my-0 font-weight-normal"><%= link_to 'Back', posts_path %></h5>
+</div>
