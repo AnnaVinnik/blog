@@ -1,6 +1,13 @@
-<h1>Editing Post</h1>
 
-<%= render 'form', post: @post %>
-
-<%= link_to 'Show', @post %> |
-<%= link_to 'Back', posts_path %>
+<div class="container">
+	<h3>Editing Post</h3>
+	 <div class="card mb-4 shadow-sm">
+	      <div class="card-header">
+	        <h4 class="my-0 font-weight-normal"> <%= render 'form', post: @post %></h4>
+	     
+	</div>
+	<div class="card-body mt-1 mb-2">
+		<%= link_to 'Show', @post %> |
+		<%= link_to 'Back', posts_path %>
+	</div>
+</div>
