@@ -42,18 +42,22 @@ class PostsController < ApplicationController
 
   # PATCH/PUT /posts/1
   # PATCH/PUT /posts/1.json
-  def update  
-    authorize @post
-    if @post.update(post_params)
-      respond_to do |format|
-        if @post.update(post_params)
-          format.html { redirect_to @post, notice: 'Post was successfully updated.' }
-          format.json { render :show, status: :ok, location: @post }
-        else
-          format.html { render :edit }
-          format.json { render json: @post.errors, status: :unprocessable_entity }
+  def update 
+    @post = Post.find(params[:id]) 
+      authorize @post
+      if @post.update(post_params)
+        respond_to do |format|
+          if @post.update(post_params)
+            format.html { redirect_to @post, notice: 'Post was successfully updated.' }
+            format.json { render :show, status: :ok, location: @post }
+          else
+            format.html { render :edit }
+            format.json { render json: @post.errors, status: :unprocessable_entity }
+          end
         end
-      end
+      
+    else
+      
     end
   end
 
@@ -61,6 +65,7 @@ class PostsController < ApplicationController
   # DELETE /posts/1.json
   def destroy
     @post = Post.find(params[:id])
+    authorize @post
     @post.destroy
     redirect_to posts_path
     
@@ -76,4 +81,5 @@ class PostsController < ApplicationController
     def post_params
       params.require(:post).permit(:title, :body)
     end
+
 end

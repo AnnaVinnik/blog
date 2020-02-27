@@ -7,8 +7,10 @@ class PostPolicy < ApplicationPolicy
   end
 
   def update?
-    if @user == @post.user or user.admin?
-    	true
-    end
+    @user == @post.user or @user.admin?
+  end
+
+  def destroy
+  	@user == @post.user or @user.admin?
   end
 end
